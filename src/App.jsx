@@ -5,7 +5,7 @@ import {
   GraduationCap,
   LibraryBig,
   Trophy,
-  Send,
+  Mail,
   MapPin,
   ArrowUpRight,
 } from "lucide-react";
@@ -108,8 +108,7 @@ export default function Portfolio() {
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/70 via-white to-orange-50/40 -z-10" />
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 my-8">
-        {/* Header & About */}
-        <section className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col justify-between">
+        <section className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col justify-between order-1">
           <div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
               {data.name}
@@ -169,8 +168,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Experience */}
-        <section className="lg:col-span-1 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col">
+        <section className="lg:col-span-1 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col order-2">
           <div className="flex items-center gap-2.5 mb-8">
             <Briefcase size={22} className="text-emerald-500" />
             <h3 className="font-bold text-lg text-slate-900">Experience</h3>
@@ -203,8 +201,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Projects */}
-        <section className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col h-fit">
+        <section className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col order-3">
           <div className="flex items-center gap-2.5 mb-8">
             <Terminal size={22} className="text-blue-500" />
             <h3 className="font-bold text-lg text-slate-900">Projects</h3>
@@ -216,7 +213,7 @@ export default function Portfolio() {
                 key={index}
                 className={`group flex flex-col p-6 bg-white border border-slate-100 rounded-2xl transition-all duration-300 ${project.theme}`}
               >
-                <div className="flex justify-between items-center mb-1">
+                <div className="flex justify-between items-start mb-2">
                   <h4 className="font-bold text-slate-900 text-base">
                     {project.title}
                   </h4>
@@ -230,11 +227,14 @@ export default function Portfolio() {
                     <ArrowUpRight size={18} />
                   </a>
                 </div>
-                <span className="text-xs text-slate-400 font-medium mb-3">
-                  {project.role}
-                </span>
 
-                <ul className="text-sm text-slate-600 leading-relaxed mb-5 list-disc list-outside ml-4 space-y-3">
+                <div className="mb-3">
+                  <span className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    Role: {project.role}
+                  </span>
+                </div>
+
+                <ul className="text-sm text-slate-600 leading-relaxed mb-5 list-disc list-outside ml-4 space-y-2.5">
                   {project.description.map((point, i) => (
                     <li key={i}>{point}</li>
                   ))}
@@ -255,9 +255,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Right Stack: Education, Skills, Achievements */}
-        <div className="lg:col-span-1 flex flex-col gap-6 md:gap-8">
-          {/* Education Card */}
+        <div className="lg:col-span-1 flex flex-col gap-6 md:gap-8 order-4">
           <section className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)]">
             <div className="flex items-center gap-2.5 mb-8">
               <LibraryBig size={22} className="text-amber-500" />
@@ -284,8 +282,7 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* Technical Skills Card */}
-          <section className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)]">
+          <section className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex-1">
             <div className="flex items-center gap-2.5 mb-6">
               <BookOpen size={22} className="text-purple-500" />
               <h3 className="font-bold text-lg text-slate-900">Skills</h3>
@@ -310,78 +307,53 @@ export default function Portfolio() {
               ))}
             </div>
           </section>
-
-          {/* Achievements Card */}
-          <section className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)]">
-            <div className="flex items-center gap-2.5 mb-6">
-              <Trophy size={22} className="text-yellow-500" />
-              <h3 className="font-bold text-lg text-slate-900">Achievements</h3>
-            </div>
-            <ul className="space-y-4 text-sm text-slate-600 leading-relaxed">
-              {data.achievements.map((item, i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
         </div>
 
-        {/* Get In Touch */}
-        <section className="lg:col-span-3 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)]">
-          <div className="flex items-center gap-2.5 mb-6">
-            <Send size={22} className="text-indigo-500" />
-            <h3 className="font-bold text-lg text-slate-900">Get In Touch</h3>
+        <section className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col justify-between order-6 lg:order-5">
+          <div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <Mail size={22} className="text-indigo-500" />
+              <h3 className="font-bold text-lg text-slate-900">Get In Touch</h3>
+            </div>
+            <p className="text-slate-600 leading-relaxed max-w-2xl text-base">
+              I am always open to discussing new opportunities, engineering challenges, or innovative AI collaborations. Feel free to connect via email or LinkedIn.
+            </p>
           </div>
-          <p className="text-slate-600 leading-relaxed max-w-2xl mb-8">
-            I&#39;m always open to discussing new opportunities, collaborations,
-            or interesting projects. Feel free to reach out through any of the
-            platforms below.
-          </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-6">
             <a
               href={`mailto:${data.email}`}
-              className="flex items-center gap-3 px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl hover:bg-indigo-600 transition-colors"
+              className="flex items-center gap-2.5 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm"
             >
-              <Send size={18} />
-              Send an Email
+              <Mail size={18} />
+              E-mail
             </a>
             <a
               href={data.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all"
+              className="flex items-center gap-2.5 px-5 py-2.5 bg-slate-50 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all"
             >
               <img src="/linkedin.svg" alt="LinkedIn" className="w-5 h-5" />
               LinkedIn
             </a>
-            <a
-              href={data.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300 transition-all"
-            >
-              <img src="/github.svg" alt="GitHub" className="w-5 h-5" />
-              GitHub
-            </a>
-            <a
-              href={data.leetcode}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 transition-all"
-            >
-              <img src="/leetcode.svg" alt="LeetCode" className="w-5 h-5" />
-              LeetCode
-            </a>
           </div>
         </section>
-      </div>
 
-      {/* Footer */}
-      <footer className="w-full max-w-7xl text-center py-6 text-sm text-slate-400">
-        © {new Date().getFullYear()} Karthick C. All rights reserved.
-      </footer>
+        <section className="lg:col-span-1 bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(6,81,237,0.05)] flex flex-col justify-between order-5 lg:order-6">
+          <div className="flex items-center gap-2.5 mb-6">
+            <Trophy size={22} className="text-yellow-500" />
+            <h3 className="font-bold text-lg text-slate-900">Achievements</h3>
+          </div>
+          <ul className="space-y-4 text-sm text-slate-600 leading-relaxed flex-1">
+            {data.achievements.map((item, i) => (
+              <li key={i} className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
