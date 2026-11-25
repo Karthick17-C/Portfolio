@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   ArrowUpRight,
-  Sparkles,
 } from "lucide-react";
 
 export default function Portfolio() {
@@ -68,7 +67,6 @@ export default function Portfolio() {
         theme:
           "hover:bg-gradient-to-br hover:from-white hover:to-violet-50/50 hover:border-violet-200 hover:shadow-violet-100/50",
         badge: "bg-violet-50 text-violet-700 border-violet-100",
-        accent: "bg-violet-500",
       },
       {
         title: "Suggestion Box",
@@ -82,7 +80,6 @@ export default function Portfolio() {
         theme:
           "hover:bg-gradient-to-br hover:from-white hover:to-blue-50/50 hover:border-blue-200 hover:shadow-blue-100/50",
         badge: "bg-blue-50 text-blue-700 border-blue-100",
-        accent: "bg-blue-500",
       },
       {
         title: "Text Extractor",
@@ -95,7 +92,6 @@ export default function Portfolio() {
         theme:
           "hover:bg-gradient-to-br hover:from-white hover:to-orange-50/50 hover:border-orange-200 hover:shadow-orange-100/50",
         badge: "bg-orange-50 text-orange-700 border-orange-100",
-        accent: "bg-orange-500",
       },
       {
         title: "E-Commerce Module",
@@ -108,7 +104,6 @@ export default function Portfolio() {
         theme:
           "hover:bg-gradient-to-br hover:from-white hover:to-emerald-50/50 hover:border-emerald-200 hover:shadow-emerald-100/50",
         badge: "bg-emerald-50 text-emerald-700 border-emerald-100",
-        accent: "bg-emerald-500",
       },
     ],
     achievements: [
@@ -130,20 +125,6 @@ export default function Portfolio() {
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 my-8">
         <section className="lg:col-span-2 bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_25px_-4px_rgba(6,81,237,0.06)] hover:shadow-[0_12px_35px_-8px_rgba(79,70,229,0.12)] hover:-translate-y-1 transition-all duration-300 ease-out flex flex-col justify-between order-1 animate-fade-in-up">
           <div>
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/70">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                Available for Software Engineer Roles
-              </span>
-              <span className="text-xs font-medium text-slate-400 flex items-center gap-1.5">
-                <Sparkles size={13} className="text-indigo-400" />
-                {data.status}
-              </span>
-            </div>
-
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
               {data.name}
             </h1>
@@ -228,16 +209,11 @@ export default function Portfolio() {
         </section>
 
         <section className="lg:col-span-2 bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_25px_-4px_rgba(6,81,237,0.06)] hover:shadow-[0_12px_35px_-8px_rgba(79,70,229,0.12)] hover:-translate-y-1 transition-all duration-300 ease-out flex flex-col order-3 animate-fade-in-up delay-200">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-blue-50 rounded-xl border border-blue-100">
-                <Terminal size={20} className="text-blue-600" />
-              </div>
-              <h3 className="font-bold text-lg text-slate-900">Projects</h3>
+          <div className="flex items-center gap-2.5 mb-8">
+            <div className="p-2 bg-blue-50 rounded-xl border border-blue-100">
+              <Terminal size={20} className="text-blue-600" />
             </div>
-            <span className="text-xs font-semibold text-slate-400 bg-slate-50 border border-slate-100 px-2.5 py-1 rounded-lg">
-              4 Featured Works
-            </span>
+            <h3 className="font-bold text-lg text-slate-900">Projects</h3>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
@@ -247,18 +223,16 @@ export default function Portfolio() {
                 className={`group relative flex flex-col p-6 bg-white border border-slate-100 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${project.theme}`}
               >
                 <div className="flex justify-between items-start mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${project.accent}`}></span>
-                    <h4 className="font-bold text-slate-900 text-base group-hover:text-indigo-600 transition-colors">
-                      {project.title}
-                    </h4>
-                  </div>
+                  <h4 className="font-bold text-slate-900 text-base group-hover:text-indigo-600 transition-colors pr-2">
+                    {project.title}
+                  </h4>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-slate-400 group-hover:text-slate-800 transition-colors p-1"
+                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-xs transition-all duration-200 shrink-0"
                     aria-label={`View ${project.title} on GitHub`}
+                    title="View GitHub Repository"
                   >
                     <ArrowUpRight
                       size={18}
@@ -352,25 +326,16 @@ export default function Portfolio() {
               <h3 className="font-bold text-lg text-slate-900">Get In Touch</h3>
             </div>
             <p className="text-slate-600 leading-relaxed max-w-2xl text-base">
-              I am open to software engineering roles, Generative AI initiatives, and scalable web application projects. Feel free to connect via email or LinkedIn.
+              Interested in discussing software engineering opportunities, Generative AI initiatives, or have a project inquiry? Feel free to reach out directly via email.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 mt-6">
             <a
               href={`mailto:${data.email}`}
-              className="flex items-center gap-2.5 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl hover:-translate-y-0.5 hover:shadow-md hover:shadow-indigo-200 transition-all duration-200"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl hover:-translate-y-0.5 hover:shadow-md hover:shadow-indigo-200 transition-all duration-200"
             >
               <Mail size={18} />
-              E-mail
-            </a>
-            <a
-              href={data.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2.5 px-5 py-2.5 bg-slate-50 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-200"
-            >
-              <img src="/linkedin.svg" alt="LinkedIn" className="w-5 h-5" />
-              LinkedIn
+              karthikcts17@gmail.com
             </a>
           </div>
         </section>
